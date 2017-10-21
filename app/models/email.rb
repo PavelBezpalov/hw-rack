@@ -10,11 +10,7 @@ module EmailCollector
 
     def save
       if @email =~ @email_regex
-        # If email is already in the database, ignore it, only add new ones
-        emails_in_db = File.open(EmailCollector::DATABASE, 'r').read.split("\n")
-        unless emails_in_db.index @email
-          File.open(EmailCollector::DATABASE, 'a') { |f| f.puts @email }
-        end
+        File.open(EmailCollector::DATABASE, 'a') { |f| f.puts @email }
         @errors = ''
         true
       else
