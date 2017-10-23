@@ -11,10 +11,10 @@
 <body>
 <div class="container">
 <!-- YOUR CODE HERE -->
-<%= form_for :subscriber, url: subscribers_url do |form| %>
-<%= form.submit %>
-<%= form.email_field :email %>
-<% end %>
+  <form action="/emails" method="POST">
+    <p><input type="text" placeholder="email@example.com" name="email"> </p>
+    <p><input type="submit" value="Отправить"></p>
+  </form>
 </div>
 
 

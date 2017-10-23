@@ -1,10 +1,22 @@
 module EmailCollector
   class Email
     # YOUR CODE HERE
-    validates :email, presence: true, uniqueness: true
-    def subscribe_email(subscriber)
-   @subscriber = subscriber
-   mail(to: @subscriber.email, subject: "New subscriber", cc: "admin@site.com"
-end
+    def initialize(email)
+
+      if email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+        @email = email
+      else
+        puts "is not an email"
+      end
+
+    end
+
+    attr_accessor :email
+
+    email_file  = "/db/email_addresses.txt"
+    address = @email
+    File.open(email_file, "w+") do |f|
+      f.write(address)
+    end
   end
 end
