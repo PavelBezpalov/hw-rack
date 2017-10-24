@@ -14,8 +14,8 @@ module EmailCollector
       if req.path =='/emails'
         EmailsController.create(req)
       else
-
-      end
+        ErrorsController.not_found
+    end
     end
   end
 end
