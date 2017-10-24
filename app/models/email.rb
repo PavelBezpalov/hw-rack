@@ -13,7 +13,8 @@ module EmailCollector
     def save
       if @email[/(^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$)/]
         # тут надо написать код
-        puts @email
+        File.open(EmailCollector::DATABASE, "a"){|file| file.puts @email}
+        # puts @email
         @errors=''
         true
       else
