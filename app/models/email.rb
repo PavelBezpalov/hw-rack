@@ -10,10 +10,6 @@ module EmailCollector
       @errors
     end
 
-    def errors=(new_errors)
-      @errors=new_errors
-    end
-
     def save
       if @email[/(^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$)/]
         # тут надо написать код
@@ -21,7 +17,7 @@ module EmailCollector
         @errors=''
         true
       else
-        @errors = 'Неверный формат'
+        @errors = 'Wrong email format.'
         false
       end
     end
