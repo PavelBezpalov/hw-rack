@@ -12,12 +12,16 @@ module EmailCollector
       return PagesController.root             if req.get?  && req.path == '/'
       # YOUR CODE HERE
       if req.path =='/emails'
-        puts req['email']
-        Email.new(req['email'])
-
-        EmailsController.create(req)
+        email =Email.new(req['email'])
+        if email
+          if email.save
+            EmailsController.create(req)
+          else
+            ErrorsController.not_found
+          end
+        end
       else
-        ErrorsController.not_found
+
       end
     end
   end
