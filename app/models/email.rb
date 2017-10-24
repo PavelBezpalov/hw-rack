@@ -2,21 +2,23 @@ module EmailCollector
   class Email
     # YOUR CODE HERE
     def initialize(email)
-
-      if email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
         @email = email
-      else
-        puts "is not an email"
-      end
-
+        @errors = ''
     end
 
-    attr_accessor :email
+    def errors
+      @errors
+    end
 
-    email_file  = "/db/email_addresses.txt"
-    address = @email
-    File.open(email_file, "w+") do |f|
-      f.write(address)
+    def save
+      if @email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+        File.open(EmailCollector::DATABASE, "w+") { |f| f.write(@email) } 
+        @errors = ''
+        true
+      else
+        @errors = 'Wrong email format.'
+        false
+      end
     end
   end
 end
