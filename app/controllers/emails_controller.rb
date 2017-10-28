@@ -7,12 +7,12 @@ module EmailCollector
         if email.save
           [
             201, { 'Content-Type' => 'text/plain' },
-            ["You successfully subscribed! Email: #{email}"]
+            ["You successfully subscribed! Email: #{address}"]
           ]
         else
           [
             422, { 'Content-Type' => 'text/plain' },
-            ["Your email wasn't saved: #{email}. Errors: #{@email.errors}"]
+            ["Your email wasn't saved: #{address}. Errors: #{email.errors}"]
           ]
         end
       else
