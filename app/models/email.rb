@@ -1,11 +1,13 @@
 module EmailCollector
   class Email
-    attr_reader :errors
-
     def initialize(email)
       @email_regex = /^[a-z0-9]+@[a-z0-9]+\.[a-z0-9]+$/i
       @errors = ''
       @email = email
+    end
+
+    def errors
+      @errors ||= ''
     end
 
     def save
