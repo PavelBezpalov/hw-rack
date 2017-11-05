@@ -9,7 +9,7 @@ module EmailCollector
     end
     
     def save
-      if @address == ''
+      if @address == '' || @address == 'email@'
         @errors = 'Wrong email format.'
         false
       else
