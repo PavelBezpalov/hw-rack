@@ -5,6 +5,7 @@ require './app/models/email'
 
 module EmailCollector
   DATABASE = './db/email_addresses.txt'.freeze
+  EMAIL_REGEX = '/(.+)@(.+)\.(.+)/i'.freeze
 
   class Application
     def self.call(env)
