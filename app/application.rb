@@ -1,3 +1,4 @@
+require './app/lib/renderable'
 require './app/controllers/emails_controller'
 require './app/controllers/errors_controller'
 require './app/controllers/pages_controller'
@@ -5,7 +6,7 @@ require './app/models/email'
 
 module EmailCollector
   DATABASE = './db/email_addresses.txt'.freeze
-  EMAIL_REGEX = '/(.+)@(.+)\.(.+)/i'.freeze
+  EMAIL_REGEX = /(.+)@(.+)\.(.+)/i
 
   class Application
     def self.call(env)

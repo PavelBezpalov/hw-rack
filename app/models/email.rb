@@ -10,13 +10,13 @@ module EmailCollector
     
     def save
       if @address =~ EmailCollector::EMAIL_REGEX
-        @errors = 'Wrong email format.'
-        false
-      else
         File.open(EmailCollector::DATABASE, 'a') do |file|
           file.puts @address
         end
         true
+      else
+        @errors = 'Wrong email format.'
+        false
       end
     end
   end
