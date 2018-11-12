@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 
+gem 'pry'
 gem 'rack'
 gem 'test-unit'
 gem 'test-unit-capybara'

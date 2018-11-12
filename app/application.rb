@@ -11,6 +11,8 @@ module EmailCollector
       req = Rack::Request.new(env)
       return PagesController.root             if req.get?  && req.path == '/'
       # YOUR CODE HERE
+      return EmailsController.create(req)    if req.post?  && req.path == '/emails'
+      # YOUR CODE HERE
       ErrorsController.not_found
     end
   end
