@@ -1,10 +1,17 @@
 module EmailCollector
   class EmailsController
+    extend Renderable
+
     def self.create(req)
       if req.params.key?('email')
-        # YOUR CODE HERE
+        email = Email.new(req.params["email"])
+        if email.save
+          render status: 201, text: 'You successfully subscribed!'
+        else
+          render status: 422, text: "Errors:  #{email.errors}"
+        end
       else
-        [403, { 'Content-Type' => 'text/plain' }, ['Missing param: email']]
+        render status: 403, text: "Missing param: email"
       end
     end
   end
